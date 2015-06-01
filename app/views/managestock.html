@@ -1,0 +1,170 @@
+
+
+<link rel="stylesheet" href="styles\wrapper.css" >
+
+
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+
+
+      </li>
+      <li class="active">
+        <a class="active" href="#/manageStock">จัดการสินค้า</a>
+      </li>
+      <li>
+        <a href="#/orderList">รายการสั่งซื้อ</a>
+      </li>
+      <li>
+        <a href="#/transaction">บันทึกรายการสั่งซื้อ</a>
+      </li>
+      <li>
+        <a href="/">สถิติทั้งหมด</a>
+      </li>
+
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+
+
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+    <!--  <a ng-href="#menu-toggle" id="menu-toggle">Toggle Menu</a> -->
+
+
+     
+     <div class="panel panel-default">
+      <div class="panel-heading">
+      เพิ่มสินค้า
+      </div>
+<div class="panel-body">
+      <form id="form1" runat="server">
+        <div class="row">
+          <div class="col-lg-3 col-lg-offset-1" style="padding:15px;">
+            <label for="productName">สินค้า</label>
+            <input class="form-control" id='productName' type="text" ng-model="newProduct.productName">
+            <label for="amount">รหัสสินค้า</label>
+            <input class="form-control" id='code' type="text" ng-model="newProduct.productCode">
+            <label for="price">ราคา</label>
+            <input class="form-control" id='price'type="number" min='0' ng-model="newProduct.price">
+            <label for="amount">จำนวน</label>
+            <input class="form-control" id='amount' type="number" min='0' ng-model="newProduct.amount">
+             
+          </div>
+          <div class="col-lg-3" style="padding:15px;">
+
+           
+             <label for="description">รายละเอียด</label>
+            <textarea name="" id="description" cols="30" rows="10" ng-model="newProduct.description"></textarea> 
+       
+        </div>
+         <div class="col-lg-3" style="padding:15px;">
+          <label for="add">เลือกรูป</label>
+          <form>
+          <input id = 'add' type="file" class="btn btn-default" ngf-select ng-model="files" ngf-multiple="multiple"></input>
+        </form>
+           <img  style="margin-top: 20px; max-height: 150px;"ng-show="files[0] != null" ngf-src="files[0]" class="thumb">
+
+       
+    
+           <!--   <input class="form-control"type="file" id="file" name="file"/>
+            <img style="max-height:200px;"id="blah" src="#" alt="your image" /> -->
+         
+         </div>
+      </div>
+
+
+    </form>
+  </div>
+  <div class="panel-footer">
+    <button ng-click="click()" class="btn btn-primary">upload</button>
+    <pre>{{log}}</pre>
+  </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <table class="table table-striped">
+
+         <tr>
+          <div class="panel panel-heading">
+            <div class="form-inline">
+             <label for="id">รหัส</label>
+             <input id='id' class="form-control" type="text" ng-model="product.productId">
+             <label for="id">สินค้า</label>
+             <input id='id' class="form-control" type="text" ng-model="product.productName">
+           </div>
+
+         </div>
+
+       </tr>
+       <tr>
+
+        <th>รหัส</th>
+        <th>รูปภาพตัวอย่าง</th>
+        <th>สินค้า</th>
+        <th>ราคา</th>
+
+        <th>สินค้าคงเหลือ</th>
+        <th></th>
+
+      </tr>
+      <tr ng-repeat="product in products| filter:product">
+
+        <td>{{product.productId}}</td>
+        <td><img style="max-height:120px;"src="{{product.imagePath}}" alt=""></td>
+        <td>{{product.productName}}</td>
+        <td>{{product.price|currency:"THB "}}</td>
+        <td>{{product.amount + " ชิ้น"}}</td>
+        <td><a ng-href="#">จัดการ</a></td>
+      </tr>
+    </table>
+  </div> 
+
+</div>
+</div>
+</div>
+</div>
+<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+
+<!-- Menu Toggle Script -->
+<script>
+$("#menu-toggle").click(function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
+});
+</script>
+
+<script>
+$("#blah").hide();
+function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#blah').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#file").change(function(){
+  (readURL(this))
+  $("#blah").show();
+  
+
+});
+</script>

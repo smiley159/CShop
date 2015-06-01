@@ -1,0 +1,83 @@
+
+
+<link rel="stylesheet" href="styles\wrapper.css" >
+
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav ">
+                <li class="sidebar-brand">
+                	
+                </li>
+                <li>
+                    <a href="#/manageStock">จัดการสินค้า</a>
+                </li>
+                <li class="active">
+                    <a href="#/orderList">รายการสั่งซื้อ</a>
+                </li>
+                <li>
+                    <a href="#/transaction">บันทึกรายการสั่งซื้อ</a>
+                </li>
+                <li>
+                    <a href="/">สถิติทั้งหมด</a>
+                </li>
+               
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+	
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+            	<a ng-href="#menu-toggle" id="menu-toggle">Toggle Menu</a>
+                <div class="row">
+                    <div class="col-lg-12">
+                    	<div class="panel panel-default">
+                       	<table class="table table-striped">
+                       		<tr>
+                       			
+                       			<th class="text-center">รหัส</th>
+                       			<th class="text-center">รูปภาพตัวอย่าง</th>
+                       			<th class="text-center">สินค้า</th>
+                       			<th class="text-center">ราคา</th>
+                       			
+                       			<th class="text-center">จำนวน</th>
+                       			<th class="text-center">ที่อยู่จัดส่ง</th>
+                       			<th class="text-center">ผู้ส่ง</th>
+                       			<th class="text-center">เบอร์ติดต่อ</th>
+                       			<th class="text-center">วันที่สั่ง</th>
+
+                       		</tr>
+                       		<tr ng-repeat="orderList in orderLists">
+                       			
+                       			<td>{{orderList.productId}}</td>
+                       			<td><img style="max-height:120px;"src="{{orderList.imgPath}}" alt=""></td>
+                       			<td>{{orderList.productName}}</td>
+                       			<td>{{orderList.price}}</td>
+                       			<td>{{orderList.amount}}</td>
+                       			<td>{{orderList.address}}</td>
+                       			<td>{{orderList.orderBy}}</td>
+                       			<td>{{orderList.contact}}</td>
+                       			<td>{{orderList.createDatetime}}</td>
+                       			
+                       		</tr>
+                       	</table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>

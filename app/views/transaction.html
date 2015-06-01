@@ -1,0 +1,84 @@
+
+
+<link rel="stylesheet" href="styles\wrapper.css" >
+
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav ">
+                <li class="sidebar-brand">
+                	
+                </li>
+                <li>
+                    <a href="#/manageStock">จัดการสินค้า</a>
+                </li>
+                <li class="active">
+                    <a href="#/orderList">รายการสั่งซื้อ</a>
+                </li>
+                <li>
+                    <a href="#/transaction">บันทึกรายการสั่งซื้อ</a>
+                </li>
+                <li>
+                    <a href="/">สถิติทั้งหมด</a>
+                </li>
+               
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+	
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+            	<a ng-href="#menu-toggle" id="menu-toggle">Toggle Menu</a>
+                <div class="row">
+                    <div class="col-lg-12">
+                    	<div class="panel panel-default">
+                       	<table class="table table-striped">
+                       		<tr>
+                       			
+                       			<th class="text-center">รหัส</th>
+                       			
+                       			<th class="text-center">สินค้า</th>
+                       			<th class="text-center">ราคา</th>
+                       			
+                       			<th class="text-center">จำนวน</th>
+                       			<th class="text-center">ที่อยู่จัดส่ง</th>
+                       			<th class="text-center">ผู้ส่ง</th>
+                       			<th class="text-center">เบอร์ติดต่อ</th>
+                       			<th class="text-center">วันที่สั่ง</th>
+
+                       		</tr>
+                       		<tr ng-repeat="transaction in transactions">
+                       			
+                       			<td>{{transaction.productId}}</td>
+                       			
+                       			<td>{{transaction.productName}}</td>
+                       			<td>{{transaction.price}}</td>
+                       			<td>{{transaction.amount}}</td>
+                       			<td>{{transaction.address}}</td>
+                       			<td>{{transaction.orderBy}}</td>
+                       			<td>{{transaction.contact}}</td>
+                       			<td>{{transaction.createDatetime}}</td>
+                       			
+                       		</tr>
+                       	</table>
+                       </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
